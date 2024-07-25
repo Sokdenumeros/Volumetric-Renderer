@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>WebGL Demo</title>
+    <link rel="stylesheet" href="./webgl.css" type="text/css" />
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/gl-matrix/2.8.1/gl-matrix-min.js"
+      integrity="sha512-zhHQR0/H5SEBL3Wn6yYSaTTZej12z0hVZKOv3TwCUXT1z5qeqGcXJLLrbERYRScEDDpYIJhPC1fk31gqR783iQ=="
+      crossorigin="anonymous"
+      defer></script>
+      <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="js/webgl-demo.js" type="module" defer></script>
+    <style>
+      .container {
+      display: flex;
+    }
+
+    .left-fieldset {
+      width: 630px;
+    }
+
+    .right-fieldsets {
+      display: flex;
+      flex-direction: column;
+      width: 620px;
+    }
+
+    .fieldset {
+      border: 2px solid #ccc;
+      border-radius: 5px;
+    }
+  
+      legend {
+        font-weight: bold;
+      }
+
+      fps {
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        color: white;
+      }
+    </style>
+  </head>
+
+  <body>
+    <fps id="fps">10</fps>
+    <canvas id="glcanvas" width="1280" height="720"></canvas>
+    <div class="container" id="widget-container">
+      <fieldset class="left-fieldset">
+        <legend>Transfer function</legend>
+        <canvas id="color-map-canvas" width="630" height="100" style="background-color: black;"></canvas>
+        <br>
+        <label for="opacity">Opacity: </label><input type="range" id="opacity-value" min="0" max="1" step="0.01" value="1">
+        <label for="color">Color: </label><input type="color" id="color-picker" value="#ff0000">
+        <br>
+        <label for="x0">X0: </label><input type="number" id="start-slope1-value" step="1" placeholder="Start Slope1" size="5">
+        <label for="x1">X1: </label><input type="number" id="end-slope1-value" step="1" placeholder="End Slope1" size="5">
+        <label for="x2">X2: </label><input type="number" id="start-slope2-value" step="1" placeholder="Start Slope2" size="5">
+        <label for="x3">X3: </label><input type="number" id="end-slope2-value" step="1" placeholder="End Slope2" size="5">
+        <br>
+        <button id="reset-button">Reset</button>
+      </fieldset>
+      <div class="right-fieldsets">
+        <fieldset class="fieldset">
+          <legend>Load Model</legend>
+          <input type="file" id="modelFileInput" accept=".raw">
+          <button id="load-button">Load Model</button>
+          <div id="modelInfo"></div>
+        </fieldset>
+        <fieldset class="fieldset">
+          <legend>Light configuration</legend>
+          <label for="lambda">&Lambda;: </label><input type="range" id="light-lambda-value" min="0" max="6.3" step="0.1" value="0">
+          <label for="phi">&Phi;: </label><input type="range" id="light-phi-value" min="0" max="6.3" step="0.1" value="0">
+          <br>
+          <label for="radius">Radius: </label><input type="number" id="light-radius-value" min="0.01" max="1" step="0.01" value="0.01" size="6">
+          <label for="distance">Distance: </label><input type="number" id="light-distance-value" min="1" max="20" step="0.5" value="1" size="6">
+          <label for="nRays">Number of rays: </label><input type="number" id="light-nRays-value" min="0" max="20" step="1" value="0" size="6">
+          <br>
+          Strategy: <label><input type="radio" name="options" id="strategy" value="0" checked>
+            Percentage
+        </label>
+        <label>
+            <input type="radio" name="options" value="1">
+            Accumulation
+        </label>
+        </fieldset>
+      </div>
+    </div>
+  </body>
+</html>
