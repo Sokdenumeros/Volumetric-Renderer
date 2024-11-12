@@ -1,4 +1,4 @@
-# MEDVIZ
+# WebGL Volumetric Renderer
 ## Results
 ![image](https://github.com/user-attachments/assets/3c933afc-4d2f-4087-bfb2-c198174c3e85)
 ![image](https://github.com/user-attachments/assets/37868469-c04a-423b-908c-c2fb2bf1d73e)
